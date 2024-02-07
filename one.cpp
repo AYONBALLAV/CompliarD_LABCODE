@@ -1,27 +1,28 @@
+
 #include <iostream>
 
-using namespace std;
-
 int main() {
-    int n;
-    cout << "size of the array: ";
-    cin >> n;
+    using namespace std;
 
+    cout << "Enter a value: ";
+    string userInput;
+    cin >> userInput;
 
-    int arr[n];
-    cout << "Enter array element :  "<< endl;
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    bool isNumericConstant = true;
+
+    for (size_t i = 0; i < userInput.length(); ++i) {
+        char ch = userInput[i];
+        if (!isdigit(ch) && ch != '.') {
+            isNumericConstant = false;
+            break;
+        }
     }
 
-    double sum = 0;
-    for (int i = 0; i < n; i++) {
-        sum = sum + arr[i];
+    if (isNumericConstant) {
+        cout << userInput << " is a numeric constant." << endl;
+    } else {
+        cout << userInput << " is not a numeric constant." << endl;
     }
-
-    double average = sum / n;
-
-    cout << "Average of the array elements: " << average << endl;
 
     return 0;
 }

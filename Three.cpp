@@ -1,40 +1,22 @@
-#include <iostream>
 
-using namespace std;
+#include <iostream>
+#include <string>
 
 int main() {
-    const int maxNameLength = 100; 
+    using namespace std;
 
-    char firstName[maxNameLength];
-    char lastName[maxNameLength];
-    char fullName[2 * maxNameLength + 1];
+    cout << "Enter a line of code: ";
+    string userInput;
+    cin >> userInput;
 
-
-    cout << "Enter your first name: ";
-    cin >> firstName;
-
-    
-    cout << "Enter your last name: ";
-    cin >> lastName;
-
-    int i, j;
-
-    
-    for (i = 0; firstName[i] != '\0'; ++i) {
-        fullName[i] = firstName[i];
+    if (userInput.length() >= 2 && userInput[0] == '/' && userInput[1] == '/') {
+        cout << userInput << " is a comment." << endl;
+    } else if (userInput.length() >= 4 && userInput[0] == '/' && userInput[1] == '*' &&
+               userInput[userInput.length() - 2] == '*' && userInput[userInput.length() - 1] == '/') {
+        cout << userInput << " is a comment." << endl;
+    } else {
+        cout << userInput << " is not a comment." << endl;
     }
-
-    fullName[i] = ' ';
-    ++i;
-
-    for (j = 0; lastName[j] != '\0'; ++j, ++i) {
-        fullName[i] = lastName[j];
-    }
-
-   
-    fullName[i] = '\0';
-
-    cout << "Full name: " << fullName << endl;
 
     return 0;
 }
